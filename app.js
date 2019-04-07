@@ -18,12 +18,22 @@ myWeatherApp.config(function ($routeProvider) {
 
 });
 
+// Angular Services
+
+myWeatherApp.service("cityService", function() {
+    this.city = "Arlington, Virginia";
+});
+
 // Angular Controllers
 
-myWeatherApp.controller("mainController", ["$scope", function($scope){
+myWeatherApp.controller("mainController", ["$scope", "$cityService", function($scope, $cityService){
+
+    $scope.city = cityService.city
 
 }]);
 
-myWeatherApp.controller("weatherController", ["$scope", function ($scope) {
+myWeatherApp.controller("weatherController", ["$scope", "cityService", function ($scope, $cityService) {
+
+    $scope.city = cityService.city
 
 }]);
